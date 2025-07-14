@@ -1,8 +1,8 @@
-# AMEXCID-DASHBOARD-2025-v1
+# AMEXCID-DASHBOARD-2025-v1 (en desarrollo)
 ## Última actualización: 14-07-2025
 
 ### Descripción: 
-Desarrollo de plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
+La plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
 
 #### Paquetes (Diseño GUI):
  ```{R, Paquetes}
@@ -47,7 +47,9 @@ library(sf)
    6.2.2. Directorio de SRE
   
    6.2.3. Directorio de AMEXCID
-  
+
+ 7. Folios
+
 ##### Documentación de Paquetes
 1 [shinydashboard](https://rstudio.github.io/shinydashboard/).
 
