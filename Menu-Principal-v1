@@ -7,7 +7,7 @@ ui <- dashboardPage(
   dashboardSidebar(),
   dashboardBody()
 )
-server <- function(input, outpu, session){}
+server <- function(input, output, session){}
 shinyApp(ui, server)
 #################################
 
