@@ -20,11 +20,14 @@ Elaboración y creación de la plataforma digital para la Agencia Mexicana para 
    
   6.1. Directorio de Dependencias
 
-     6.2.1. Directorios Internos 
+   6.2.1. Directorios Internos 
   
-     6.2.2. Directorio de SRE
+   6.2.2. Directorio de SRE
   
-     6.2.3. Directorio de AMEXCID
+   6.2.3. Directorio de AMEXCID
   
 #### Paquetes (Diseño GUI):
+
+´´´
 install.packages(c("shiny","shinydashboard"))
+´´´
