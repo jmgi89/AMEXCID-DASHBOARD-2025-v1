@@ -17,8 +17,12 @@ Información General sobre Proyectos Activos de CID y AMEXCID
 3. Instrumentos de Cooperación
 4. Proyectos Activos
 6. Directorios
+   
   6.1 Directorio de Dependencias
+  
   6.2 Directorio de SRE
+  
   6.3 Directorio de AMEXCID
+  
 #### Paquetes (Diseño GUI):
 install.packages(c("shiny","shinydashboard"))
