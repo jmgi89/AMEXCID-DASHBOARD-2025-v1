@@ -36,8 +36,10 @@ install.packages(c("ggplot2","tidyverse"))
  install.packages(c("tmap","rnaturalearth", "cartography"))
  ```
 ##### Documentación de Paquetes
-1 [shinydashboard.](https://rstudio.github.io/shinydashboard/)
+1 [shinydashboard](https://rstudio.github.io/shinydashboard/).
+
 2. Rnaturalearth.
-2.1. [Documentación Oficial](https://www.naturalearthdata.com/). Exporta información geoepacial como Vectores o Raster. 
-2.2. [Documentación Externo](https://www.rdocumentation.org/packages/rnaturalearth/versions/0.0.0.9000).
    
+2.1. [Documentación Oficial](https://www.naturalearthdata.com/). Exporta información geoepacial como Vectores o Raster. 
+
+2.2. [Documentación Externo](https://www.rdocumentation.org/packages/rnaturalearth/versions/0.0.0.9000).
