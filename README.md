@@ -37,10 +37,12 @@ library(sf)
 5. Proyectos Activos
    
 6. Directorios
-   
-  6.1. Directorio de Dependencias
 
-   6.2.1. Directorios Internos 
+6.1. Directorios Externos
+   
+  6.1.1 Directorio de Dependencias
+
+6.2.1. Directorios Internos 
   
    6.2.2. Directorio de SRE
   
