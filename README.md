@@ -3,7 +3,9 @@
 ### Descripción: 
 Elaboración y creación de la plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
 ### Lista de Contenido y Estructura
-0. Información General sobre Proyectos Activos de CID y AMEXCID
+-Página principal:
+Información General sobre Proyectos Activos de CID y AMEXCID
+-Tabs
 1. Mapas
 2. Información Estadística
 3. Instrumentos de Cooperación
