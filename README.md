@@ -2,7 +2,7 @@
 ## Última actualización: 14-07-2025
 
 ### Descripción: 
-Elaboración y creación de la plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
+Desarrollo de plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
 
 ### Lista de Contenido y Estructura
 
@@ -37,16 +37,21 @@ install.packages(c("ggplot2","tidyverse"))
 library(ggplot2)
 library(tidyverse)
 # Mapas-3
- install.packages(c("tmap","rnaturalearth", "cartography"))
+install.packages(c("tmap","rnaturalearth", "cartography"))
 library(tmap)
 library(rnaturalearth)
 library(cartography)
+# Manipulación de datos espaciales
+install.packages(c("sf"))
+library(sf)
  ```
 ##### Documentación de Paquetes
 1 [shinydashboard](https://rstudio.github.io/shinydashboard/).
 
 2. Rnaturalearth.
    
-2.1. [Documentación Oficial](https://www.naturalearthdata.com/). Exporta información geoepacial como Vectores o Raster. 
+2.1. [Documentación Oficial](https://www.naturalearthdata.com/). Exporta información geoespacial como Vectores o Raster. 
 
 2.2. [Documentación Externo](https://www.rdocumentation.org/packages/rnaturalearth/versions/0.0.0.9000).
+
+3. [Cartography](https://cran.r-project.org/web/packages/cartography/vignettes/cartography.html).
