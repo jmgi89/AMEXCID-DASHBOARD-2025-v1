@@ -1,11 +1,17 @@
 # AMEXCID-DASHBOARD-2025-v1
 ## Última actualización: 14-07-2025
+
 ### Descripción: 
 Elaboración y creación de la plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
+
 ### Lista de Contenido y Estructura
+
 -Página principal:
+
 Información General sobre Proyectos Activos de CID y AMEXCID
+
 -Tabs
+
 1. Mapas
 2. Información Estadística
 3. Instrumentos de Cooperación
