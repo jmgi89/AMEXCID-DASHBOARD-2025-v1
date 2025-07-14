@@ -1,30 +1,6 @@
 # AMEXCID-DASHBOARD-2025-v1 (en desarrollo)
-## Última actualización: 14-07-2025
-
-### Descripción: 
-La plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
-
-#### Paquetes (Diseño GUI):
- ```{R, Paquetes}
-# GUI-1
-install.packages(c("shiny","shinydashboard"))
-library(shiny)
-library(shinydashboard)
-# Manejo de Datos-2
-install.packages(c("ggplot2","tidyverse"))
-library(ggplot2)
-library(tidyverse)
-# Mapas-3
-install.packages(c("tmap","rnaturalearth", "cartography"))
-library(tmap)
-library(rnaturalearth)
-library(cartography)
-# Manipulación de datos espaciales
-install.packages(c("sf"))
-library(sf)
- ```
-
-### Lista de Contenido y Estructura
+## Lista de Contenido y Estructura
+### Última actualización: 14-07-2025
 
 1. Página principal: Proyectos Activos de CID.
 
@@ -49,7 +25,28 @@ library(sf)
    6.2.3. Directorio de AMEXCID
 
  7. Folios
+### Descripción: 
+La plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
 
+#### Paquetes (Diseño GUI):
+ ```{R, Paquetes}
+# GUI-1
+install.packages(c("shiny","shinydashboard"))
+library(shiny)
+library(shinydashboard)
+# Manejo de Datos-2
+install.packages(c("ggplot2","tidyverse"))
+library(ggplot2)
+library(tidyverse)
+# Mapas-3
+install.packages(c("tmap","rnaturalearth", "cartography"))
+library(tmap)
+library(rnaturalearth)
+library(cartography)
+# Manipulación de datos espaciales
+install.packages(c("sf"))
+library(sf)
+ ```
 ##### Documentación de Paquetes
 1 [shinydashboard](https://rstudio.github.io/shinydashboard/).
 
