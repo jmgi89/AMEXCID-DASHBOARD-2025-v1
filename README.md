@@ -6,16 +6,17 @@ Elaboración y creación de la plataforma digital para la Agencia Mexicana para 
 
 ### Lista de Contenido y Estructura
 
--Página principal:
-
-Información General sobre Proyectos Activos de CID y AMEXCID
-
+-Página principal: Proyectos Activos de CID.
 -Tabs
 
 1. Mapas
-2. Información Estadística
-3. Instrumentos de Cooperación
-4. Proyectos Activos
+   
+3. Información Estadística
+   
+4. Instrumentos de Cooperación
+   
+5. Proyectos Activos
+   
 6. Directorios
    
   6.1 Directorio de Dependencias
