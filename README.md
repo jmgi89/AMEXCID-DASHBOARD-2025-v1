@@ -55,4 +55,8 @@ library(sf)
 
 2.2. [Documentación Externo](https://www.rdocumentation.org/packages/rnaturalearth/versions/0.0.0.9000).
 
+##### Publicación 
+
+-[Posit Connect.](https://docs.posit.co/connect-cloud/how-to/r/shiny-r.html) 
+
 3. [Cartography](https://cran.r-project.org/web/packages/cartography/vignettes/cartography.html).
