@@ -2,17 +2,25 @@
 ## Lista de Contenido y Estructura
 ### Última actualización: 14-07-2025
 
-1. Página principal: Proyectos Activos de CID.
+1. Menu Principal: Portal AMEXCID 
+   1.1. Proyectos Activos de CID.
+      1.1.1. Títulos de Proyectos
+      1.1.2. Fondo
+      1.1.3. Descripción
+      1.1.4. Duración
+      1.1.5. Fechas tentativas de implementación
+   1.2. Mapas
+   1.3. EPIs
 
-2. Mapas
+3. Mapas
    
-3. Información Estadística
+4. Información Estadística
    
-4. Instrumentos de Cooperación
+5. Instrumentos de Cooperación
    
-5. Proyectos Activos
+6. Proyectos Activos
    
-6. Directorios
+7. Directorios
 
 6.1. Directorios Externos
    
