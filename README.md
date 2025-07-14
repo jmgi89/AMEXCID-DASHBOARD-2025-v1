@@ -30,10 +30,17 @@ Elaboración y creación de la plataforma digital para la Agencia Mexicana para 
  ```{R, Paquetes}
 # GUI-1
 install.packages(c("shiny","shinydashboard"))
+library(shiny)
+library(shinydashboard)
 # Manejo de Datos-2
 install.packages(c("ggplot2","tidyverse"))
+library(ggplot2)
+library(tidyverse)
 # Mapas-3
  install.packages(c("tmap","rnaturalearth", "cartography"))
+library(tmap)
+library(rnaturalearth)
+library(cartography)
  ```
 ##### Documentación de Paquetes
 1 [shinydashboard](https://rstudio.github.io/shinydashboard/).
