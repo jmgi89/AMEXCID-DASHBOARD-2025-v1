@@ -1,0 +1,14 @@
+#################################
+install.packages(c("shiny", "shinydashboard"))
+#################################
+# Sintax Esqueleto
+ui <- dashboardPage(
+  dashboardHeader(),
+  dashboardSidebar(),
+  dashboardBody()
+)
+server <- function(input, outpu, session){}
+shinyApp(ui, server)
+#################################
+
+#################################
