@@ -1,18 +1,11 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 #######################################
 # Shiny Syntax Dashboard
-#######################################
-# Opción-2 (OK)
+    # Opción-2 (OK)
 #######################################
 library(shiny)
 library(shinydashboard)
+library(readxl)
+library(tidyverse)
 #######################################
 # UI
 ui <- dashboardPage(
@@ -27,7 +20,9 @@ ui <- dashboardPage(
             menuItem("Instrumentos", tabName = "tab4", icon = icon("file-alt")),
             menuItem("Contrapartes", tabName = "tab5", icon = icon("users")),
             menuItem("Directorios", tabName = "tab6", icon = icon("address-book")),
-            menuItem("Convocatorias", tabName = "tab7", icon = icon("bullhorn"))
+            menuItem("Convocatorias", tabName = "tab7", icon = icon("bullhorn")),
+            menuItem("Folios", tabName = "tab8", icon = icon("list")), # de lugar de Sistema de Folio, cambiar a Sistema de Gestión Incorporar a box() Login Credenciales
+            menuItem("Tickets IT", tabName = "tab9", icon = icon("computer"))
         )
     ),
     
@@ -54,12 +49,23 @@ ui <- dashboardPage(
             tabItem(tabName = "tab4", h2("Instrumentos"), p("Instrumentos de cooperación disponibles.")),
             tabItem(tabName = "tab5", h2("Contrapartes"), p("Contrapartes extranjeras registradas.")),
             tabItem(tabName = "tab6", h2("Directorios"), p("Directorios de dependencias y contactos.")),
-            tabItem(tabName = "tab7", h2("Convocatorias"), p("Convocatorias abiertas y futuras."))
+            tabItem(tabName = "tab7", h2("Convocatorias"), p("Convocatorias abiertas y futuras.")),
+            tabItem(tabName = "tab8", h2("Folios"), p("EPIs.")),
+            tabItem(tabName = "tab9", h2("Tickets IT"), p("Incorporar colaboración con Mister Fides."))
         )
     )
 )
-# Server
+# Server -------------------------------------------------------
 server <- function(input, output) {}
+# --------------------------------------------------------------
+
 # App
 shinyApp(ui, server)
+#######################################
+# manifest.json Output
+install.packages("openssl")
+getwd()
+
+writeManifest(
+    appDir = getwd())
 #######################################
