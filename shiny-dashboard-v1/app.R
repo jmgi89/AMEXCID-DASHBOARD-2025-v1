@@ -21,7 +21,7 @@ ui <- dashboardPage(
             menuItem("Contrapartes", tabName = "tab5", icon = icon("users")),
             menuItem("Directorios", tabName = "tab6", icon = icon("address-book")),
             menuItem("Convocatorias", tabName = "tab7", icon = icon("bullhorn")),
-            menuItem("Folios", tabName = "tab8", icon = icon("list")), # de lugar de Sistema de Folio, cambiar a Sistema de Gestión Incorporar a box() Login Credenciales
+            menuItem("Sistemas de Gestión", tabName = "tab8", icon = icon("list")), # de lugar de Sistema de Folio, cambiar a Sistema de Gestión Incorporar a box() Login Credenciales
             menuItem("Tickets IT", tabName = "tab9", icon = icon("computer"))
         )
     ),
