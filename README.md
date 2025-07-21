@@ -1,4 +1,7 @@
 # AMEXCID-DASHBOARD-2025-v1 (en desarrollo)
+   ## Descripción del portal digital o Dashboard AMEXCID: 
+La plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
+
 ## Lista de Contenido y Estructura
 ### Última actualización: 14-07-2025
 
@@ -18,17 +21,9 @@
    
    1.2. Mapas
    
-   1.3. EPIs
-
-3. Mapas
-   
-4. Información Estadística
-   
 5. Instrumentos de Cooperación
    
-6. Proyectos Activos
-   
-7. Directorios
+6. Directorios
 
 6.1. Directorios Externos
    
@@ -39,12 +34,12 @@
    6.2.2. Directorio de SRE
   
    6.2.3. Directorio de AMEXCID
-
- 7. Folios
- 8. Tickets IT
-### Descripción: 
-La plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
-
+   
+ 8. Sistemas de Gestión
+   8.1 Tickets IT
+   8.2 Folios
+   8.2.1 EPIs
+   
 #### Paquetes (Diseño GUI):
  ```{R, Paquetes}
 # GUI-1
