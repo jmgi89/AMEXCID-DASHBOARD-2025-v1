@@ -3,7 +3,7 @@
 La plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
 
 ## Lista de Contenido y Estructura
-### Última actualización: 14-07-2025
+### Última actualización: 21-07-2025
 
 1. Menu Principal: Portal AMEXCID
    
