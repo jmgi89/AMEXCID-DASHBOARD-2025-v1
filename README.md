@@ -1,11 +1,47 @@
-# AMEXCID-DASHBOARD-2025-v1 (en desarrollo)
-   ## Descripción del portal digital o Dashboard AMEXCID: 
-La plataforma digital para la Agencia Mexicana para la Cooperación internacional (AMEXCID).
+
+# AMEXCID-DASHBOARD-2025-v1
+   ## Descripción del portal digital o Dashboard AMEXCID: Sistema de Gestión de AMEXCID (SiGA)
+   ### **Autor de este repositorio:** jmgonzalezi
+
+#### Introducción 
+La plataforma digital para la Agencia Mexicana para la Cooperación internacional (*AMEXCID*) se identifica aquí como *Sistema de Gestión* (*SiGA*). Esta Sección documenta el control de versiones en el desarrollo de una plataforma de consulta digital para uso interno. Este repositorio no incluye información personal de los funcionarios adentro de la Secretaría de las Relaciones Exteriores (*SRE*). 
+
+La necesidad de tener una plataforma digital de consulta es para reunir las fuentes relevantes para la facilitación de gestiones adentro de AMEXCID. Por lo tanto, la presente página menciona los instrumentos que habilitan la implementación de este proyecto.   
+
+#### Instrumentos Legales: 
+
+#### 1-Constitución Política de los Estados Unidos Mexicanos (CPEUM)
+> Capítulo I: de los derechos humanos 
+
+> > Artículo 6to 
+
+> > > Fracción "N"
+
+> > > > Fracción "N"
+
+#### 2-Programa de las Naciones Unidas para el Desarrollo
+
+> Valor "N"
+
+> > Valor "N"
+
+> > > Valor "N"
+
+#### 3-Programa de las Naciones Unidas para el Desarrollo
+
+> Valor "N"
+
+> > Valor "N"
+
+> > > Valor "N"
 
 ## Lista de Contenido y Estructura
-### Última actualización: 21-07-2025
+### Última actualización: 22-07-2025
+   #### Reglas
+   - Cambiar la fecha solamente cuanda se haga el Commit y el Push hacia Github.
+   
 
-1. Menu Principal: Portal AMEXCID
+1. Menu Principal: Portal AMEXCID *REVISAR*
    
    1.1. Proyectos Activos de CID.
 
@@ -54,7 +90,8 @@ library(tidyverse)
 install.packages(c("tmap","rnaturalearth", "cartography"))
 library(tmap)
 library(rnaturalearth)
-library(cartography)
+library(leaflet)
+library(tmap)
 # Manipulación de datos espaciales
 install.packages(c("sf"))
 library(sf)

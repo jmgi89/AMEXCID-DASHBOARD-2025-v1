@@ -1,13 +1,13 @@
-#######################################
-# Shiny Syntax Dashboard
-    # Opción-2 (OK)
+######### Shiny Syntax Dashboard ######
 #######################################
 library(shiny)
 library(shinydashboard)
 library(readxl)
 library(tidyverse)
-#######################################
-# UI
+install.packages("arcgis") # Incompatible con el sistema operativo. FUENTE: esri.com/arcgis-blog/products/developers/announcements/announcing-archgis-r-package
+library(arcgis)
+warnings()
+################ UI ####################
 ui <- dashboardPage(
     skin = "red",  # Optional: sets dashboard theme color
     dashboardHeader(title = span("AMEXCID Dashboard", style = "font-family: 'Noto Sans'; font-size: 20px")),
@@ -55,32 +55,150 @@ ui <- dashboardPage(
         )
     )
 )
-# Server -------------------------------------------------------
+# Server --------------------------------------
 server <- function(input, output) {}
-# --------------------------------------------------------------
-
+# ---------------------------------------------
 # App
 shinyApp(ui, server)
-#######################################
-  # Option-3: Box() syntax
+
+########## Option-3: Paquetes (FAIL) #########
+install.packages(c("shiny", "bslib"))
 #######################################
 library(shiny)
-library(shinydashboard)
 library(bslib)
+############ Esqueleto ################
+ui <- page_sidebar(
+  title = "Sistema de Gestión de AMEXCID (SiGA)",
+  sidebar = "Sidebar", 
+  "Menu Principal"
+)
 
-# UI ------------------------------------
+shinyApp(ui, function(input, output) {})
+############## Adaptación ##############
+library(ggplot2)
+data(df, package = "palmerdf")
+
+ui <- page_sidebar(
+  title = "df dashboard",
+  sidebar = sidebar(
+    title = "Histogram controls",
+    varSelectInput(
+      "var", "Select variable",
+      dplyr::select_if(penguins, is.numeric)
+    ),
+    numericInput("bins", "Number of bins", 30)
+  ),
+  card(
+    card_header("Histogram"),
+    plotOutput("p")
+  )
+)
+
+server <- function(input, output) {
+  output$p <- renderPlot({
+    ggplot(penguins) +
+      geom_histogram(aes(!!input$var), bins = input$bins) +
+      theme_bw(base_size = 20)
+  })
+}
+
+shinyApp(ui, server)
+######## Opción-4: shinydashboard ######
 library(shiny)
 library(shinydashboard)
-library(bslib)
-library(leaflet)
 
-# UI --------------------------------------
 ui <- dashboardPage(
   skin = "red",
   
+  # HEADER
   dashboardHeader(
-    title = span("AMEXCID Dashboard", style = "font-family: 'Noto Sans'; font-size: 20px")
+    title = span("Sistema de Gestión de AMEXCID", titleWidth = 450, style = "font-family: 'Noto Sans'; font-size: 20px")
   ),
+  
+  # SIDEBAR MENU
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Mapa", tabName = "tab1", icon = icon("globe")),
+      menuItem("Estadísticas", tabName = "tab2", icon = icon("chart-bar")),
+      menuItem("Proyectos", tabName = "tab3", icon = icon("project-diagram")),
+      menuItem("Instrumentos", tabName = "tab4", icon = icon("file-alt")),
+      menuItem("Contrapartes", tabName = "tab5", icon = icon("users")),
+      menuItem("Directorios", tabName = "tab6", icon = icon("address-book"))
+    )
+  ),
+  
+  # MAIN BODY WITH BOXES IN EACH TAB
+  dashboardBody(
+    tabItems(
+      tabItem(tabName = "tab1",
+              box(title = "Mapa Interactivo", status = "primary", solidHeader = TRUE, width = 12,
+                  p("Aquí irá el mapa con funciones de descarga.")
+              )
+      ),
+      
+      tabItem(tabName = "tab2",
+              box(title = "Estadísticas", status = "info", solidHeader = TRUE, width = 12,
+                  p("Visualizaciones estadísticas.")
+              )
+      ),
+      
+      tabItem(tabName = "tab3",
+              box(title = "Proyectos", status = "success", solidHeader = TRUE, width = 12,
+                  p("Listado y detalles de proyectos activos.")
+              )
+      ),
+      
+      tabItem(tabName = "tab4",
+              box(title = "Instrumentos de Cooperación", status = "warning", solidHeader = TRUE, width = 12,
+                  p("Instrumentos disponibles.")
+              )
+      ),
+      
+      tabItem(tabName = "tab5",
+              box(title = "Contrapartes Internacionales", status = "danger", solidHeader = TRUE, width = 12,
+                  p("Listado de contrapartes como JICA, KOICA, etc.")
+              )
+      ),
+      
+      tabItem(tabName = "tab6",
+              box(title = "Directorios", status = "secondary", solidHeader = TRUE, width = 12,
+                  p("Directorios institucionales con enlaces.")
+              )
+      )
+    )
+  )
+)
+
+server <- function(input, output) {}
+
+shinyApp(ui, server)
+###### manifest.json (FAIL) ########
+# APUNTES DEL FAIL: 
+  # Versión de RStudio incompatible 
+
+# manifest.json Output
+install.packages("openssl")
+library(openssl)
+getwd()
+writeManifest(
+    appDir = getwd())
+################# Option-5: Sonnet (OK) ###################
+# Load required libraries
+library(shiny)
+library(shinydashboard)
+library(ggplot2)
+library(tidyverse)
+library(tmap)
+library(leaflet)
+
+# Sample data for demonstration
+# Replace this with your actual data
+world_map <- map_data("world")
+
+# UI
+ui <- dashboardPage(
+  skin = "blue",
+  dashboardHeader(title = span("Sistema de Gestión de AMEXCID (SiGA)", style = "font-family: 'Noto Sans'; font-size: 20px")),
   
   dashboardSidebar(
     sidebarMenu(
@@ -112,99 +230,92 @@ ui <- dashboardPage(
     ),
     
     tabItems(
-      # MAPA TAB WITH DYNAMIC MAP
-      tabItem(tabName = "tab1",
-              box(title = "Mapa Interactivo de Proyectos", status = "primary", solidHeader = TRUE, width = 12,
-                  leafletOutput("leaflet_mapa", height = 500)
-              )
+      tabItem(tabName = "tab1", 
+              h2("Mapa"), 
+              box(title = "Mapa Interactivo", status = "primary", solidHeader = TRUE, 
+                  leafletOutput("map", height = 500),
+                  downloadButton("downloadMap", "Descargar Mapa"))
       ),
-      
-      tabItem(tabName = "tab2",
-              box(title = "Indicadores Estadísticos", status = "info", solidHeader = TRUE, width = 12,
-                  p("Información estadística relevante."))
+      tabItem(tabName = "tab2", 
+              h2("Estadísticas"), 
+              box(title = "Gráficos Estadísticos", status = "primary", solidHeader = TRUE, 
+                  plotOutput("statPlot"))
       ),
-      
-      tabItem(tabName = "tab3",
-              box(title = "Proyectos en Curso", status = "success", solidHeader = TRUE, width = 12,
-                  p("Listado y detalles de proyectos activos."),
-                  downloadButton("downloadMapa", "Descargar mapa del proyecto")
-              )
+      tabItem(tabName = "tab3", 
+              h2("Proyectos"), 
+              box(title = "Listado de Proyectos", status = "primary", solidHeader = TRUE, 
+                  p("Listado y detalles de proyectos activos."))
       ),
-      
-      tabItem(tabName = "tab4",
-              box(title = "Instrumentos de Cooperación", status = "warning", solidHeader = TRUE, width = 12,
+      tabItem(tabName = "tab4", 
+              h2("Instrumentos"), 
+              box(title = "Instrumentos de Cooperación", status = "primary", solidHeader = TRUE, 
                   p("Instrumentos de cooperación disponibles."))
       ),
-      
-      tabItem(tabName = "tab5",
-              box(title = "Contrapartes Internacionales", status = "danger", solidHeader = TRUE, width = 12,
+      tabItem(tabName = "tab5", 
+              h2("Contrapartes"), 
+              box(title = "Contrapartes Extranjeras", status = "primary", solidHeader = TRUE, 
                   p("Contrapartes extranjeras registradas."))
       ),
-      
-      tabItem(tabName = "tab6",
-              box(title = "Directorios Institucionales", status = "primary", solidHeader = TRUE, width = 12,
+      tabItem(tabName = "tab6", 
+              h2("Directorios"), 
+              box(title = "Directorios de Dependencias", status = "primary", solidHeader = TRUE, 
                   p("Directorios de dependencias y contactos."))
       ),
-      
-      tabItem(tabName = "tab7",
-              box(title = "Convocatorias Vigentes", status = "info", solidHeader = TRUE, width = 12,
+      tabItem(tabName = "tab7", 
+              h2("Convocatorias"), 
+              box(title = "Convocatorias Abiertas", status = "primary", solidHeader = TRUE, 
                   p("Convocatorias abiertas y futuras."))
       ),
-      
-      tabItem(tabName = "tab8",
-              box(title = "Sistema de Gestión", status = "success", solidHeader = TRUE, width = 12,
-                  textInput("user", "Usuario"),
-                  passwordInput("pass", "Contraseña"),
-                  actionButton("login", "Iniciar sesión"))
+      tabItem(tabName = "tab8", 
+              h2("Sistemas de Gestión"), 
+              box(title = "EPIs", status = "primary", solidHeader = TRUE, 
+                  p("EPIs."))
       ),
-      
-      tabItem(tabName = "tab9",
-              box(title = "Tickets de Soporte Técnico", status = "warning", solidHeader = TRUE, width = 12,
+      tabItem(tabName = "tab9", 
+              h2("Tickets IT"), 
+              box(title = "Colaboración IT", status = "primary", solidHeader = TRUE, 
                   p("Incorporar colaboración con Mister Fides."))
       )
     )
-  ),
-  
-  theme = bs_theme(
-    base_font = font_google("Noto Sans"),
-    primary = "#D9534F",  # red skin match
-    bootswatch = "flatly"
   )
 )
 
-# SERVER ----------------------------------
-server <- function(input, output, session) {
+# Server
+server <- function(input, output) {
   
-  # DYNAMIC MAP
-  output$leaflet_mapa <- renderLeaflet({
-    leaflet() |>
-      addProviderTiles(providers$CartoDB.Positron) |>
-      setView(lng = -99.1332, lat = 19.4326, zoom = 5) |>
-      addMarkers(
-        lng = -99.1332, lat = 19.4326,
-        popup = "CDMX - Proyecto 1"
-      )
+  # Render Leaflet map
+  output$map <- renderLeaflet({
+    leaflet(data = world_map) %>%
+      addTiles() %>%
+      addPolygons(fillColor = "blue", weight = 1, opacity = 1, color = "white", 
+                  fillOpacity = 0.7, highlightOptions = highlightOptions(weight = 2, color = "white", 
+                                                                         fillOpacity = 0.7, bringToFront = TRUE)) %>%
+      setView(lng = 0, lat = 20, zoom = 2)
   })
   
-  # MAP DOWNLOAD
-  output$downloadMapa <- downloadHandler(
+  # Downloadable map
+  output$downloadMap <- downloadHandler(
     filename = function() {
-      paste("mapa_proyecto_", Sys.Date(), ".png", sep = "")
+      paste("map_", Sys.Date(), ".png", sep = "")
     },
     content = function(file) {
-      # Replace with real output if available
-      file.copy("www/placeholder-map.png", file)
+      png(file)
+      print(leaflet(data = world_map) %>%
+              addTiles() %>%
+              addPolygons(fillColor = "blue", weight = 1, opacity = 1, color = "white", 
+                          fillOpacity = 0.7))
+      dev.off()
     }
   )
+  
+  # Render statistical plot
+  output$statPlot <- renderPlot({
+    ggplot(un_population, aes(x = , y = mpg)) +
+      geom_point() +
+      theme_minimal() +
+      labs(title = "Relación entre Peso y MPG", x = "Peso (wt)", y = "Millas por Galón (mpg)")
+  })
 }
 
-# RUN --------------------------------------
+# Run the application 
 shinyApp(ui, server)
-#######################################
-# manifest.json Output
-install.packages("openssl")
-library(openssl)
-getwd()
-writeManifest(
-    appDir = getwd())
-#######################################
