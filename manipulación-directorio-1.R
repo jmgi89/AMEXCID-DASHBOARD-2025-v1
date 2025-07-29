@@ -22,8 +22,7 @@ response <- fromJSON(target)
 un_population <- response$data
 un_population
 view(un_population)
-library(ggplot2)
-heatmap(un_population, )
+
 # Loop until there are new pages with data
 while (!is.null(response$nextPage)){
   
@@ -46,9 +45,17 @@ install.packages("CepalStatR")
 library(CepalStatR)
 ??CepalStatR
 indicadores <- call.indicators(language.en = F)
-# Error unexpected tokens '>' y '%'
-indicadores %>& group_by(Área, Dimensión) %>% count() 
-########## DATA WRANGLING: API #################
+indicadores
+# Error unexpected tokens '>' y '%': 
+  # indicadores %>& group_by(Área, Dimensión) %>% count() 
+########## DATA WRANGLING: Authorization Access Token for APIs #################
+install.packages("httr2")
+library(httr2)
+# Token Stored in an environment variable named "MY_API_TOKEN"
+access_token <- Sys.getenv("MY_API_TOKEN")
+# Solicitud del portador del Token
+request <- request("")
+########################### DATA WRANGLING: API ################################
 # Declares the base url for calling the API
 base_url <- ""
 
@@ -71,7 +78,9 @@ while (!is.null(response$nextPage)){
   
   #add the data of the new page to the data.frame with the data of the precious pages
   un_population <- rbind(df, response$data)
-  
-}
-
-
+################ FAOSTAT - LOCAL ################
+library(tidyverse)
+library(readxl)
+state_of_the_world_2025 <- read_csv("/Users/jmgi/Documents/Documents/datos-prueba/clean_swop_demographic_2025.csv")
+view(state_of_the_world_2025)
+################ FAOSTAT - FIN ################
