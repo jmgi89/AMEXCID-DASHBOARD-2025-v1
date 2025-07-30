@@ -1,7 +1,4 @@
-######### Shiny Dashboard Package #####
-library(shiny)
-library(bslib)
-################# Buena Opción: Sistema de Gestión de AMEXCID (SiGA) (OK) #########
+################# Sistema de Gestión de AMEXCID (SiGA) (OK) #########
 # Librerías
   # Shiny
 library(shiny)
@@ -14,15 +11,26 @@ library(tmap)
 library(leaflet)
   # Tablas Interactivas
 library(reactable)
-################# Script (OK) ###################
+###################### Script (OK) ############################
 # ESQUELETO
 # Datos para el mapa mundial
 world_map <- map_data("world")
 
 # UI
+library(shiny)
+library(shinydashboard)
+library(leaflet)
+library(ggplot2)
+
+# UI
 ui <- dashboardPage(
   skin = "blue",
-  dashboardHeader(title = span("Sistema de Gestión de AMEXCID (SiGA)", style = "font-family: 'Noto Sans'; font-size: 20px")),
+  
+  dashboardHeader(
+    title = span("Sistema de Gestión de AMEXCID (SiGA)", 
+                 style = "font-family: 'Noto Sans'; font-size: 20px"),
+    titleWidth = 450
+  ),
   
   dashboardSidebar(
     sidebarMenu(
@@ -33,8 +41,7 @@ ui <- dashboardPage(
       menuItem("Contrapartes", tabName = "tab5", icon = icon("users")),
       menuItem("Directorios", tabName = "tab6", icon = icon("address-book")),
       menuItem("Convocatorias", tabName = "tab7", icon = icon("bullhorn")),
-      menuItem("Sistemas de Gestión", tabName = "tab8", icon = icon("list")),
-      menuItem("Tickets IT", tabName = "tab9", icon = icon("computer"))
+      menuItem("Sistemas de Gestión", tabName = "tab8", icon = icon("list"))
     )
   ),
   
@@ -116,27 +123,20 @@ ui <- dashboardPage(
       ),
       
       tabItem(tabName = "tab8", 
-              h2("Sistemas de Gestión"), 
+              h2("Sistema de Gestión de AMEXCID (SiGA)"), 
               fluidRow(
-                box(title = "EPIs", width = 12, status = "primary", solidHeader = TRUE, 
-                    p("EPIs."))
-              )
-      ),
-      
-      tabItem(tabName = "tab9", 
-              h2("Tickets IT"), 
-              fluidRow(
-                box(title = "Colaboración IT", width = 12, status = "primary", solidHeader = TRUE, 
-                    p("Incorporar colaboración con Mister Fides."))
+                box(title = "SiGA", width = 12, status = "primary", solidHeader = TRUE, 
+                    p("SiGA liga aquí"))
               )
       )
     )
   )
 )
+
 # Server
 server <- function(input, output) {
   
-  # Render mapa Leaflet 
+  # Output Mapa Leaflet 
   output$map <- renderLeaflet({
     leaflet(data = world_map) %>%
       addTiles() %>%
@@ -163,13 +163,13 @@ server <- function(input, output) {
   
   # Dato Estadísitco
   output$statPlot <- renderPlot({
-    ggplot(un_population, aes(x = , y = mpg)) + # Añadir Variables 
+    ggplot(state_of_the_world_2025, aes(x = País, y = `Población_Total(millones)`)) +
       geom_point() +
       theme_minimal() +
-      labs(title = "Relación entre Peso y MPG", x = "Peso (wt)", y = "Millas por Galón (mpg)")
+      labs(title = "Población Total 2025", x = "País", y = "Población Total (millones)")
   })
 }
-??gapminder
+
 # Run the application 
 shinyApp(ui, server)
 ########### FIN v1: Sistema de Gestión de AMEXCID (SiGA)  ###################
